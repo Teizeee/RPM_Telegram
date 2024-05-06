@@ -1,5 +1,4 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-import os
 
 def IlKeyBoard():
     kb=InlineKeyboardBuilder()
@@ -15,7 +14,7 @@ def SpecConfKeyBoard():
 
 def SpecKeyBoard():
     kb=InlineKeyboardBuilder()
-    kb.button(text="Архитектура", callback_data="Арх")
+    kb.button(text="Архитектура",callback_data="Арх")
     kb.button(text="Гидрогеология (Гидрогеология и инженерная геология)", callback_data="Гид")
     kb.button(text="ИСиП (Информационные системы и программирование)", callback_data="Прог")
     kb.button(text="СиЭЗИС (Строительство и эксплуатация зданий и сооружений)", callback_data="Строит")

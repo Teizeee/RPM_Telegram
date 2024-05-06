@@ -1,6 +1,7 @@
 from peewee import SqliteDatabase,Model,CharField
 
 data=[""]
+
 db=SqliteDatabase("database.db")
 class BaseModel(Model):
     class Meta:
@@ -12,5 +13,3 @@ db.connect()
 db.create_tables([User])
 User.truncate_table()
 db.close()
-
-

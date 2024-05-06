@@ -4,6 +4,7 @@ from state.aStates import RegisterState
 from keyboards.keyboard_reg import SpecConfKeyBoard,SpecKeyBoard
 from database.db import User,data
 
+
 async def speciality_kb(call: CallbackQuery, state: FSMContext):
     global spec
     await call.answer()
@@ -41,8 +42,7 @@ async def speciality_kb(call: CallbackQuery, state: FSMContext):
     elif call.data=="Элек":
         spec="Электронщик"
         await call.message.answer(text="Электронщик - это специалист, занимающийся разработкой, производством, монтажом и обслуживанием электронных устройств и систем. Основные обязанности электронщика включают:\n"
-        "Сборка электронных компонентов и узлов.\nНастройка и регулировка электронных устройств.\n Ремонт электронной техники.\nМонтаж и наладка электронных систем.\nТехническое обслуживание электронного оборудования."
-        ,reply_markup= SpecConfKeyBoard())
+        "Сборка электронных компонентов и узлов.\nНастройка и регулировка электронных устройств.\n Ремонт электронной техники.\nМонтаж и наладка электронных систем.\nТехническое обслуживание электронного оборудования.",reply_markup= SpecConfKeyBoard())
         await call.message.edit_reply_markup(reply_markup=None)
         await state.set_state(RegisterState.select_spec)
 
@@ -53,7 +53,8 @@ async def speciality_config(call: CallbackQuery, state: FSMContext):
         await call.message.edit_reply_markup(reply_markup=None)
         await call.message.answer("На этом всё!")
         await state.clear()
+        
     elif call.data=="Нет":
         await call.message.edit_reply_markup(reply_markup=None)
-        await call.message.answer(reply_markup=SpecKeyBoard())
+        await call.message.answer(text="Выберете другую специальность",reply_markup=SpecKeyBoard())
         await state.set_state(RegisterState.register_spec)

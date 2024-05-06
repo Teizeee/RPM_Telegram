@@ -5,6 +5,10 @@ from keyboards.keyboard_reg import IlKeyBoard, SpecKeyBoard
 from database.db import data
 import emoji
 
+async def get_start(message: Message, state: FSMContext):
+    await state.set_state(RegisterState.register_name)
+    await message.answer(text="Введите ваше имя.")
+    
 async def register_name(message: Message, state: FSMContext):
     global name
     if message.text:
@@ -26,6 +30,7 @@ async def select_name(call: CallbackQuery, state: FSMContext):
         await call.message.edit_reply_markup(reply_markup=None)
         await call.message.answer("На кого ты хочешь поступить?",reply_markup=SpecKeyBoard())
         await state.set_state(RegisterState.register_spec)
+
     elif call.data=="Нет":
         await call.message.edit_reply_markup(reply_markup=None)
         await call.message.answer("Введите еще раз свое имя.")
