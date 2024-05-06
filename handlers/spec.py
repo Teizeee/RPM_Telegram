@@ -51,7 +51,7 @@ async def speciality_config(call: CallbackQuery, state: FSMContext):
     if call.data=="Да":
         User.create(UserName=data[0],UserSpec=spec)
         await call.message.edit_reply_markup(reply_markup=None)
-        await call.message.answer("На этом всё!")
+        await call.message.answer(f"Поздравляю вы зачислены на 1 курс специальности ({spec})")
         await state.clear()
         
     elif call.data=="Нет":
