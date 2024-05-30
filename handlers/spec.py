@@ -2,12 +2,11 @@ from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
 from state.aStates import RegisterState 
 from keyboards.keyboard_reg import SpecConfKeyBoard,SpecKeyBoard
-from database.db import User,data
+from basemodel.db import User,data
 
 
 async def speciality_kb(call: CallbackQuery, state: FSMContext):
     global spec
-    await call.answer()
     if call.data=="Арх":
         spec="Архитектор"
         await call.message.answer("Архитектор — это специалист, который участвует в проектировании и строительстве различных объектов — зданий, сооружений и территорий. "

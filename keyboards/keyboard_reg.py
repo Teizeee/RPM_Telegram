@@ -1,11 +1,5 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-def IlKeyBoard():
-    kb=InlineKeyboardBuilder()
-    kb.button(text="Да",callback_data="Да")
-    kb.button(text="Нет",callback_data="Нет")
-    return kb.as_markup()
-
 def SpecConfKeyBoard():
     kb=InlineKeyboardBuilder()
     kb.button(text="Подтвердить",callback_data="Да")
